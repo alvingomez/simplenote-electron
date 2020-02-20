@@ -126,7 +126,7 @@ export const actionMap = new ActionMap({
         content: string;
       }) {
         return (dispatch, getState: () => State) => {
-          const { appState: state, settings } = getState();
+          const { settings } = getState();
           const timestamp = new Date().getTime() / 1000;
 
           // insert a new note into the store and select it
