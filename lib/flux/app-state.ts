@@ -69,14 +69,12 @@ export const actionMap = new ActionMap({
 
     showAllNotes(state: AppState) {
       return update(state, {
-        tag: { $set: null },
         previousIndex: { $set: -1 },
       });
     },
 
     selectTrash(state: AppState) {
       return update(state, {
-        tag: { $set: null },
         previousIndex: { $set: -1 },
       });
     },
@@ -141,9 +139,7 @@ export const actionMap = new ActionMap({
               modificationDate: timestamp,
               shareURL: '',
               publishURL: '',
-              tags: ([] as T.TagName[]).concat(
-                state.tag ? state.tag.data.name : []
-              ),
+              tags: [],
             },
             (e, note) => {
               if (e) {
