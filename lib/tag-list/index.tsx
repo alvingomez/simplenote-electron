@@ -8,17 +8,15 @@ import { get } from 'lodash';
 import TagListInput from './input';
 import appState from '../flux/app-state';
 import { renameTag, reorderTags, trashTag } from '../state/domain/tags';
-import { toggleTagEditing } from '../state/ui/actions';
+import { selectTag, toggleTagEditing } from '../state/ui/actions';
 import { tracks } from '../analytics';
 
-const { selectTagAndSelectFirstNote } = appState.actionCreators;
 const { recordEvent } = tracks;
 
 export class TagList extends Component {
   static displayName = 'TagList';
 
   static propTypes = {
-    onSelectTag: PropTypes.func.isRequired,
     onEditTags: PropTypes.func.isRequired,
     renameTag: PropTypes.func.isRequired,
     reorderTags: PropTypes.func.isRequired,
@@ -92,16 +90,19 @@ export class TagList extends Component {
   }
 }
 
-const mapStateToProps = ({ appState: state, ui: { editingTags } }) => ({
+const mapStateToProps = ({
+  appState: state,
+  ui: { editingTags, selectedTag },
+}) => ({
   editingTags,
   tags: state.tags,
-  selectedTag: state.tag,
+  selectedTag,
 });
 
 const mapDispatchToProps = dispatch => ({
   onEditTags: () => dispatch(toggleTagEditing()),
   onSelectTag: tag => {
-    dispatch(selectTagAndSelectFirstNote({ tag }));
+    dispatch(selectTag(tag));
     recordEvent('list_tag_viewed');
   },
   renameTag: arg => dispatch(renameTag(arg)),

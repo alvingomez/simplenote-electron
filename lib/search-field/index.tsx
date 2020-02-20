@@ -91,9 +91,9 @@ export class SearchField extends Component<ConnectedProps> {
 
 const mapStateToProps = ({
   appState: state,
-  ui: { listTitle, searchQuery },
+  ui: { listTitle, selectedTag, searchQuery },
 }: State) => ({
-  isTagSelected: !!state.tag,
+  isTagSelected: !!selectedTag,
   placeholder: listTitle,
   searchQuery,
 });

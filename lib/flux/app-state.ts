@@ -81,26 +81,6 @@ export const actionMap = new ActionMap({
       });
     },
 
-    selectTagAndSelectFirstNote: {
-      creator({ tag }: { tag: T.TagEntity }) {
-        return (dispatch, getState) => {
-          dispatch(this.action('selectTag', { tag }));
-          dispatch(
-            this.action('notesLoaded', {
-              notes: getState().appState.notes,
-            })
-          );
-        };
-      },
-    },
-
-    selectTag(state: AppState, { tag }: { tag: T.TagEntity }) {
-      return update(state, {
-        tag: { $set: tag },
-        previousIndex: { $set: -1 },
-      });
-    },
-
     showDialog(state: AppState, { dialog }) {
       const { type, multiple = false, title, ...dialogProps } = dialog;
 

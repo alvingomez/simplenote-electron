@@ -19,7 +19,7 @@ export const middleware: S.Middleware = store => {
       case 'App.deleteNoteForever':
       case 'App.notesLoaded':
       case 'App.restoreNote':
-      case 'App.selectTag':
+      case 'SELECT_TAG':
       case 'App.selectTrash':
       case 'App.showAllNotes':
       case 'App.tagsLoaded':

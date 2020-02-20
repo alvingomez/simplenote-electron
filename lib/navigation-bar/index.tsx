@@ -144,11 +144,11 @@ export class NavigationBar extends Component<Props> {
 const mapStateToProps = ({
   appState: state,
   settings,
-  ui: { showNavigation, showTrash },
+  ui: { selectedTag, showNavigation, showTrash },
 }) => ({
   autoHideMenuBar: settings.autoHideMenuBar,
   dialogs: state.dialogs,
-  selectedTag: state.tag,
+  selectedTag,
   showNavigation,
   showTrash,
 });
