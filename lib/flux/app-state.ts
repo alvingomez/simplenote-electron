@@ -126,7 +126,10 @@ export const actionMap = new ActionMap({
         content: string;
       }) {
         return (dispatch, getState: () => State) => {
-          const { settings } = getState();
+          const {
+            settings,
+            ui: { selectedTag },
+          } = getState();
           const timestamp = new Date().getTime() / 1000;
 
           // insert a new note into the store and select it
@@ -139,7 +142,9 @@ export const actionMap = new ActionMap({
               modificationDate: timestamp,
               shareURL: '',
               publishURL: '',
-              tags: [],
+              tags: ([] as T.TagName[]).concat(
+                selectedTag ? selectedTag.data.name : []
+              ),
             },
             (e, note) => {
               if (e) {
