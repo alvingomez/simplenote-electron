@@ -64,7 +64,7 @@ export const selectNote: A.ActionCreator<A.SelectNote> = (
 ) => ({ type: 'SELECT_NOTE', note });
 
 export const selectTag: A.ActionCreator<A.SelectTag> = (tag: T.TagEntity) => ({
-  type: 'SELECT_TAG',
+  type: 'OPEN_TAG',
   tag,
 });
 

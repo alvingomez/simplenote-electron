@@ -83,7 +83,7 @@ export type SelectNote = Action<
   'SELECT_NOTE',
   { note: T.NoteEntity; options?: { hasRemoteUpdate: boolean } }
 >;
-export type SelectTag = Action<'SELECT_TAG', { tag: T.TagEntity }>;
+export type SelectTag = Action<'OPEN_TAG', { tag: T.TagEntity }>;
 
 export type ActionType =
   | CreateNote

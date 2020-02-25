@@ -21,7 +21,7 @@ const editingTags: A.Reducer<boolean> = (state = false, action) => {
     case 'TAG_EDITING_TOGGLE':
       return !state;
     case 'SELECT_NOTE':
-    case 'SELECT_TAG':
+    case 'OPEN_TAG':
     case 'App.selectTrash':
     case 'App.showAllNotes':
     case 'NAVIGATION_TOGGLE':
@@ -46,7 +46,7 @@ const listTitle: A.Reducer<T.TranslatableString> = (
       return 'All Notes';
     case 'App.selectTrash':
       return 'Trash';
-    case 'SELECT_TAG':
+    case 'OPEN_TAG':
       return action.tag.data.name;
     default:
       return state;
@@ -110,7 +110,7 @@ const selectedTag: A.Reducer<T.TagEntity | null> = (state = null, action) => {
     case 'App.selectTrash':
     case 'App.showAllNotes':
       return null;
-    case 'SELECT_TAG':
+    case 'OPEN_TAG':
       return action.tag;
     default:
       return state;
@@ -140,7 +140,7 @@ const showNavigation: A.Reducer<boolean> = (state = false, action) => {
     case 'NAVIGATION_TOGGLE':
       return !state;
 
-    case 'SELECT_TAG':
+    case 'OPEN_TAG':
     case 'App.selectTrash':
     case 'App.showAllNotes':
       return false;
@@ -171,7 +171,7 @@ const showTrash: A.Reducer<boolean> = (state = false, action) => {
     case 'App.selectTrash':
       return true;
     case 'CREATE_NOTE':
-    case 'SELECT_TAG':
+    case 'OPEN_TAG':
     case 'App.showAllNotes': {
       return false;
     }
@@ -187,7 +187,7 @@ const note: A.Reducer<T.NoteEntity | null> = (state = null, action) => {
     case 'App.emptyTrash':
     case 'App.showAllNotes':
     case 'App.selectTrash':
-    case 'SELECT_TAG':
+    case 'OPEN_TAG':
       return null;
     case 'SELECT_NOTE':
       return action.options
