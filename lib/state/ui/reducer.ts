@@ -68,6 +68,18 @@ const noteRevisions: A.Reducer<T.NoteEntity[]> = (
   }
 };
 
+const openedTag: A.Reducer<T.TagEntity | null> = (state = null, action) => {
+  switch (action.type) {
+    case 'App.selectTrash':
+    case 'App.showAllNotes':
+      return null;
+    case 'OPEN_TAG':
+      return action.tag;
+    default:
+      return state;
+  }
+};
+
 const selectedRevision: A.Reducer<T.NoteEntity | null> = (
   state = null,
   action
@@ -104,18 +116,6 @@ const unsyncedNoteIds: A.Reducer<T.EntityId[]> = (
 
 const searchQuery: A.Reducer<string> = (state = '', action) =>
   'SEARCH' === action.type ? action.searchQuery : state;
-
-const selectedTag: A.Reducer<T.TagEntity | null> = (state = null, action) => {
-  switch (action.type) {
-    case 'App.selectTrash':
-    case 'App.showAllNotes':
-      return null;
-    case 'OPEN_TAG':
-      return action.tag;
-    default:
-      return state;
-  }
-};
 
 const simperiumConnected: A.Reducer<boolean> = (state = false, action) =>
   'SIMPERIUM_CONNECTION_STATUS_TOGGLE' === action.type
@@ -213,9 +213,9 @@ export default combineReducers({
   listTitle,
   note,
   noteRevisions,
+  openedTag,
   searchQuery,
   selectedRevision,
-  selectedTag,
   showNavigation,
   showNoteInfo,
   showNoteList,

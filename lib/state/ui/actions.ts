@@ -20,6 +20,11 @@ export const focusSearchField: A.ActionCreator<A.FocusSearchField> = () => ({
   type: 'FOCUS_SEARCH_FIELD',
 });
 
+export const openTag: A.ActionCreator<A.OpenTag> = (tag: T.TagEntity) => ({
+  type: 'OPEN_TAG',
+  tag,
+});
+
 export const selectRevision: A.ActionCreator<A.SelectRevision> = (
   revision: T.NoteEntity
 ) => ({
@@ -62,11 +67,6 @@ export const search: A.ActionCreator<A.Search> = (searchQuery: string) => ({
 export const selectNote: A.ActionCreator<A.SelectNote> = (
   note: T.NoteEntity
 ) => ({ type: 'SELECT_NOTE', note });
-
-export const selectTag: A.ActionCreator<A.SelectTag> = (tag: T.TagEntity) => ({
-  type: 'OPEN_TAG',
-  tag,
-});
 
 export const toggleEditMode: A.ActionCreator<A.ToggleEditMode> = () => ({
   type: 'TOGGLE_EDIT_MODE',

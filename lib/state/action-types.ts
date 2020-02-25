@@ -83,7 +83,7 @@ export type SelectNote = Action<
   'SELECT_NOTE',
   { note: T.NoteEntity; options?: { hasRemoteUpdate: boolean } }
 >;
-export type SelectTag = Action<'OPEN_TAG', { tag: T.TagEntity }>;
+export type OpenTag = Action<'OPEN_TAG', { tag: T.TagEntity }>;
 
 export type ActionType =
   | CreateNote
@@ -91,10 +91,10 @@ export type ActionType =
   | LegacyAction
   | FilterNotes
   | FocusSearchField
+  | OpenTag
   | Search
   | SelectNote
   | SelectRevision
-  | SelectTag
   | SetAccountName
   | SetAuth
   | SetAutoHideMenuBar

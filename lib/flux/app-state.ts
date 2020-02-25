@@ -128,7 +128,7 @@ export const actionMap = new ActionMap({
         return (dispatch, getState: () => State) => {
           const {
             settings,
-            ui: { selectedTag },
+            ui: { openedTag },
           } = getState();
           const timestamp = new Date().getTime() / 1000;
 
@@ -142,9 +142,7 @@ export const actionMap = new ActionMap({
               modificationDate: timestamp,
               shareURL: '',
               publishURL: '',
-              tags: ([] as T.TagName[]).concat(
-                selectedTag ? selectedTag.data.name : []
-              ),
+              tags: openedTag ? [openedTag.data.name] : [],
             },
             (e, note) => {
               if (e) {
